@@ -19,7 +19,7 @@ export const sortOption: ISelectOption[] = [
     value: "3",
   },
   {
-    option: "7일차",
+    option: "일주일",
     value: "7",
   },
 ];
