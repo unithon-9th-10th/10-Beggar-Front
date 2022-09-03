@@ -75,13 +75,13 @@ const Wrapper = styled.section<{ isFold: boolean } & ArrowProps>`
     font-size: 14px;
     margin-left: 13px;
     position: absolute;
-    top: 232px;
+    top: 331px;
   }
 
   .list {
     position: absolute;
     z-index: 99;
-    top: 260px;
+    top: 355px;
     right: 20px;
     width: 67px;
     border: ${(props) => (props.isFold ? "1px solid #E0E0E0" : "")};

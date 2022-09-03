@@ -3,7 +3,6 @@ import { sortOption } from "./common/selectedDropDown/option";
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
-
 import Arrow from "../assets/img/common/leftArrow.svg";
 import line from "../assets/img/common/line.svg";
 import SelectDropDown from "./common/selectedDropDown";
@@ -81,6 +80,19 @@ const CreateChallenge = () => {
             />
             <Image src={line} alt="line" />
           </TitleDiv>
+
+          <MoneyDiv>
+            <p>목표 총지출 금액</p>
+            <input
+              type="text"
+              value={money}
+              placeholder="기간 동안 총 사용할 수 있는 금액을 입력해주세요."
+              onChange={onChangeMoney}
+              onBlur={onBlurMoney}
+              onClick={onClickMoneyText}
+            />
+            <Image src={line} alt="line" />
+          </MoneyDiv>
           <DateDiv>
             <div>
               <TitleText>챌린지 기간</TitleText>
@@ -94,20 +106,8 @@ const CreateChallenge = () => {
               options={sortOption}
             />
           </DateDiv>
-          <MoneyDiv>
-            <p>목표 총지출 금액</p>
-            <input
-              type="text"
-              value={money}
-              placeholder="기간 동안 총 사용할 수 있는 금액을 입력해주세요."
-              onChange={onChangeMoney}
-              onBlur={onBlurMoney}
-              onClick={onClickMoneyText}
-            />
-            <Image src={line} alt="line" />
-          </MoneyDiv>
         </InputDiv>
-        <Link href="/inviteUser">
+        <Link href="/createUser">
           <DefaultBtn
             onClick={onClickBtn}
             height={60}
@@ -144,7 +144,7 @@ const TitleDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   > input {
-    width: 350px;
+    width: 330px;
     margin-bottom: 10px;
     border: none;
     outline: none;
@@ -169,13 +169,17 @@ const DateText = styled.p`
   margin-bottom: 0;
   font-size: 14px;
   font-weight: 400;
-  color: ${({ theme }) => theme.color.light_gray};
+  color: ${({ theme }) => theme.color.gray};
+  margin-bottom: 363px;
 `;
 
 const MoneyDiv = styled.div`
   padding: 0 20px;
-  margin-bottom: 393px;
   font-size: 14px;
+  margin-bottom: 31px;
+  > p {
+    font-size: 16px;
+  }
   input {
     width: 350px;
     border: none;
