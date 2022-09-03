@@ -1,12 +1,8 @@
 import type { NextPage } from "next";
-import Create from "../components/createChallenge";
+import CreateChallenge from "../components/createChallenge";
 
 const createChallenge: NextPage = () => {
-  return (
-    <div>
-      <Create />
-    </div>
-  );
+  return <CreateChallenge />;
 };
 
 export default createChallenge;

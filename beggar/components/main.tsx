@@ -2,9 +2,9 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
-import theme from "../../styles/theme";
-import main from "../../assets/img/startmain.svg";
-import DefaultBtn from "../common/defaultBtn";
+import theme from "../styles/theme";
+import main from "../assets/img/startmain.svg";
+import DefaultBtn from "./common/defaultBtn";
 
 const Main = () => {
   return (
@@ -30,11 +30,9 @@ const Main = () => {
       <Link href="/createChallenge">
         <DefaultBtn height={60} value={"챌린지 만들기"} />
       </Link>
-      <Link href="/inviteUser">
-        <Bottom>
-          <p>초대받은 챌린지가 있나요?</p>
-        </Bottom>
-      </Link>
+      <Bottom>
+        <p>초대받은 챌린지가 있나요?</p>
+      </Bottom>
     </Wrapper>
   );
 };

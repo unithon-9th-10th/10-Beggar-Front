@@ -2,8 +2,8 @@ import { NextPage } from "next";
 import React from "react";
 import CreateUser from "../components/createUser";
 
-const CreateUserPage: NextPage = () => {
-  return <CreateUser></CreateUser>;
+const createUser: NextPage = () => {
+  return <CreateUser />;
 };
 
-export default CreateUserPage;
+export default createUser;

@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import Arrow from "../../assets/img/common/leftArrow.svg";
-import FightImg from "../../assets/img/fightPaper.svg";
-import theme from "../../styles/theme";
-import DefaultBtn from "../common/defaultBtn";
+import Link from "next/link";
+import Arrow from "../assets/img/common/leftArrow.svg";
+import FightImg from "../assets/img/fightPaper.svg";
+import theme from "../styles/theme";
+import DefaultBtn from "./common/defaultBtn";
 
-const FollowUser = () => {
+const InviteUser = () => {
   return (
     <div>
       <Header>
-        <Image id="arrow" src={Arrow} alt="arrow" />
         <p>챌린지 친구 초대</p>
       </Header>
       <Body>
@@ -28,7 +28,9 @@ const FollowUser = () => {
             다시 복사할 수 있어요.
           </DescriptionText>
         </div>
-        <DefaultBtn height={60} value={"챌린지 화면으로"} />
+        <Link href="/challenge">
+          <DefaultBtn height={60} value={"챌린지 화면으로"} />
+        </Link>
       </Body>
     </div>
   );
@@ -39,9 +41,7 @@ const Header = styled.div`
   padding: 0 20px;
   margin-top: 48px;
   margin-bottom: 165px;
-  > p {
-    margin-left: 108px;
-  }
+  justify-content: center;
 `;
 
 const Body = styled.div`
@@ -85,4 +85,4 @@ const DescriptionText = styled.p`
   font-weight: 400;
 `;
 
-export default FollowUser;
+export default InviteUser;
