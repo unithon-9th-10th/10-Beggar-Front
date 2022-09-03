@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import { sortOption } from "../common/selectedDropDown/option";
 import styled from "styled-components";
 import Image from "next/image";
 import Arrow from "../../assets/img/common/leftArrow.svg";
 import line from "../../assets/img/common/line.svg";
+import SelectDropDown from "../common/selectedDropDown";
 
 const Create = () => {
+  const [sort, setSort] = useState(sortOption[0].value);
+
+  const onChangeSort = (sort: string) => {
+    const sortValue = sort;
+    setSort(sortValue);
+  };
+
   return (
     <Wrapper>
       <Header>
@@ -19,6 +28,11 @@ const Create = () => {
         </TitleDiv>
         <DateDiv>
           <p>챌린지 기간</p>
+          <SelectDropDown
+            value={sort}
+            onChangeValue={onChangeSort}
+            options={sortOption}
+          />
         </DateDiv>
       </InputDiv>
     </Wrapper>
@@ -56,6 +70,11 @@ const TitleDiv = styled.div`
 
 const DateDiv = styled.div`
   padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  > p {
+    margin: 0;
+  }
 `;
 
 export default Create;
