@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { sortOption } from "../common/selectedDropDown/option";
+import { sortOption } from "./common/selectedDropDown/option";
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
 
-import Arrow from "../../assets/img/common/leftArrow.svg";
-import line from "../../assets/img/common/line.svg";
-import SelectDropDown from "../common/selectedDropDown";
-import theme from "../../styles/theme";
-import DefaultBtn from "../common/defaultBtn";
+import Arrow from "../assets/img/common/leftArrow.svg";
+import line from "../assets/img/common/line.svg";
+import SelectDropDown from "./common/selectedDropDown";
+import theme from "../styles/theme";
+import DefaultBtn from "./common/defaultBtn";
 
-const Create = () => {
+const CreateChallenge = () => {
   let today = new Date();
   let month = ("0" + (today.getMonth() + 1)).slice(-2);
   let day = ("0" + today.getDate()).slice(-2);
@@ -42,7 +42,7 @@ const Create = () => {
     setMoney(value);
   };
 
-  const onClickBtn = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onClickBtn = (e: React.MouseEvent<HTMLInputElement>) => {
     if (title === "" || money === "") {
       e.preventDefault();
     }
@@ -107,7 +107,7 @@ const Create = () => {
             <Image src={line} alt="line" />
           </MoneyDiv>
         </InputDiv>
-        <Link href="/challenge">
+        <Link href="/inviteUser">
           <DefaultBtn
             onClick={onClickBtn}
             height={60}
@@ -185,4 +185,4 @@ const MoneyDiv = styled.div`
   }
 `;
 
-export default Create;
+export default CreateChallenge;

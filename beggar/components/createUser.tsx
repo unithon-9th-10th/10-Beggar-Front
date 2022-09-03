@@ -4,7 +4,7 @@ import Image from "next/image";
 import Arrow from "../../assets/img/common/leftArrow.svg";
 import People from "../../assets/img/common/peopleImg.svg";
 import line from "../../assets/img/common/line.svg";
-import DefaultBtn from "../common/defaultBtn";
+import DefaultBtn from "./common/defaultBtn";
 
 const CreateUser = () => {
   const [content, setContent] = useState({

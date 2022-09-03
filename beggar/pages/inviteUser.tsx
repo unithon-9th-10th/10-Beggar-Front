@@ -1,9 +1,9 @@
 import { NextPage } from "next";
 import React from "react";
-import FollowUser from "../components/inviteUser";
+import InviteUser from "../components/inviteUser";
 
-const InviteUserPage: NextPage = () => {
-  return <FollowUser />;
+const inviteUser: NextPage = () => {
+  return <InviteUser />;
 };
 
-export default InviteUserPage;
+export default inviteUser;
