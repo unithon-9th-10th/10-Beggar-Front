@@ -82,7 +82,6 @@ const CreateSpend = () => {
   };
 
   const onClickSelect = (e: React.MouseEvent<HTMLImageElement>) => {
-    setCategory(e.target.value);
     setModal(!modal);
   };
 
