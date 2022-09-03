@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import styled from "styled-components";
-import Title from "../components/challenge/title";
+import Header from "../components/challenge/header";
 import Friends from "../components/challenge/friends";
 import InfoCard from "../components/challenge/infoCard";
 import SpendingHistory from "../components/challenge/spendingHistory";
@@ -8,7 +8,7 @@ import SpendingHistory from "../components/challenge/spendingHistory";
 const mainChallenge: NextPage = () => {
   return (
     <Container>
-      <Title />
+      <Header />
       <Friends />
       <InfoCard />
       <SpendingHistory />
