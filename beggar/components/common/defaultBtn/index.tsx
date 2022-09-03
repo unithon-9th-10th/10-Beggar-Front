@@ -24,6 +24,7 @@ const DefaultBtnBox = styled.input<{
   border-radius: 8px;
   color: ${({ theme }) => theme.color.white};
   font-size: 20px;
+  font-family: BM-HANNA;
   font-weight: 400;
   ::disabled {
     border: none;

@@ -54,7 +54,6 @@ const CreateUser = () => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 `;
 
@@ -62,9 +61,9 @@ const Header = styled.div`
   display: flex;
   padding: 0 20px;
   margin-top: 48px;
+  margin-bottom: 62px;
   > p {
     margin-left: 108px;
-    margin-bottom: 62px;
   }
 `;
 
