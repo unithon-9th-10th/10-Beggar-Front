@@ -7,11 +7,20 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const DefaultBtn = ({ height, type = "button", ...props }: Props) => {
-  return <DefaultBtnBox theme={theme} type={type} height={height} {...props} />;
+  return (
+    <DefaultBtnBox
+      theme={theme}
+      type={type}
+      height={height}
+      isDisabled={props.disabled}
+      {...props}
+    />
+  );
 };
 
 const DefaultBtnBox = styled.input<{
   height?: number;
+  isDisabled?: boolean;
 }>`
   display: flex;
   justify-content: center;
@@ -19,16 +28,13 @@ const DefaultBtnBox = styled.input<{
   cursor: pointer;
   width: 350px;
   height: ${({ height }) => (height ? `${height}px` : `100%`)};
-  background: ${({ theme }) => theme.color.black};
-  border: 1px solid black;
+  background-color: ${({ theme, isDisabled }) =>
+    isDisabled ? theme.color.light_gray : theme.color.black};
+  border: ${({ isDisabled }) => (isDisabled ? "none" : "1px solid #000000")};
   border-radius: 8px;
   color: ${({ theme }) => theme.color.white};
   font-size: 20px;
   font-weight: 400;
-  ::disabled {
-    border: none;
-    background-color: ${({ theme }) => theme.color.light_gray};
-  }
 `;
 
 export default DefaultBtn;
