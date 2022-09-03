@@ -13,6 +13,9 @@ const Friends: NextPage = () => {
     { name: "n3", image: "blabla" },
     { name: "n4", image: "blabla" },
     { name: "n5", image: "blabla" },
+    { name: "n3", image: "blabla" },
+    { name: "n4", image: "blabla" },
+    { name: "n5", image: "blabla" },
   ];
 
   const [currentUser, setCurrentUser] = useState(0);
