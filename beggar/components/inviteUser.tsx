@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
-import Arrow from "../assets/img/common/leftArrow.svg";
+
 import FightImg from "../assets/img/fightPaper.svg";
 import theme from "../styles/theme";
 import DefaultBtn from "./common/defaultBtn";
