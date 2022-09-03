@@ -22,8 +22,8 @@ const SpendingHistory: NextPage = () => {
         <PriceText>- 21,200원</PriceText>
       </LineBox>
       <ItemBox>
-        {spendingList.map((item) => (
-          <div>{item.category}</div>
+        {spendingList.map((item, index) => (
+          <Item key={index}>{item.category}</Item>
         ))}
       </ItemBox>
     </Container>
@@ -87,5 +87,7 @@ const PriceText = styled.div`
 const ItemBox = styled.div`
   border: 1px solid black;
 `;
+
+const Item = styled.div``;
 
 export default SpendingHistory;
