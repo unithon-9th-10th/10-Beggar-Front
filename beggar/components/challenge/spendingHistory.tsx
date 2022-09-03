@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import Image from "next/image";
+import Link from "next/link";
 import AddSpendingOutline from "../../assets/img/challenge/addSpendingOutline.svg";
 
 import styled from "styled-components";
@@ -14,7 +14,9 @@ const SpendingHistory: NextPage = () => {
     <Container>
       <TitleBox>
         <TitleText>지출 내역</TitleText>
-        <ButtonText>+ 지출 내역 추가</ButtonText>
+        <Link href="/createSpend">
+          <ButtonText>+ 지출 내역 추가</ButtonText>
+        </Link>
       </TitleBox>
       <LineBox>
         <DateText>9월 2일 금요일</DateText>

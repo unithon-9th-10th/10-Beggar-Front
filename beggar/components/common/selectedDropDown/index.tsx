@@ -33,7 +33,7 @@ const SelectDropDown: React.FC<IDropdownProps> = ({
     const index = options.findIndex((i: ISelectOption) => i.value === value);
     if (index === -1) return value;
     return options[index].option;
-  }, [value]);
+  }, [options, value]);
 
   return (
     <Wrapper className="dropdownWrapper" isFold={isFold}>
