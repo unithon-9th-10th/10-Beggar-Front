@@ -75,7 +75,7 @@ const Wrapper = styled.section<{ isFold: boolean } & ArrowProps>`
     font-size: 14px;
     margin-left: 13px;
     position: absolute;
-    top: 237px;
+    top: 232px;
   }
 
   .list {

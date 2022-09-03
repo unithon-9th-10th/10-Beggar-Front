@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { sortOption } from "../common/selectedDropDown/option";
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
+
 import Arrow from "../../assets/img/common/leftArrow.svg";
 import line from "../../assets/img/common/line.svg";
 import SelectDropDown from "../common/selectedDropDown";
@@ -18,6 +20,8 @@ const Create = () => {
   const [money, setMoney] = useState<string>("");
   const [sort, setSort] = useState(sortOption[0].value);
   const [sumDay, setsumToday] = useState<Number>(NumDay);
+
+  const [isDisable, setIsDisable] = useState(true);
 
   let NumSort = 0;
 
@@ -38,18 +42,32 @@ const Create = () => {
     setMoney(value);
   };
 
-  const onClickBtn = () => {
-    if (title === "" && money === "") {
-      alert("내용을 전부 입력해주세요");
-    } else {
-      alert("챌린지 생성 성공");
+  const onClickBtn = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (title === "" || money === "") {
+      e.preventDefault();
     }
+  };
+
+  useEffect(() => {
+    if (title && money) {
+      setIsDisable(false);
+    }
+  }, [title, money]);
+
+  const onBlurMoney = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    value && setMoney(value + "원");
+  };
+  const onClickMoneyText = () => {
+    money && setMoney(money.slice(0, money.length - 1));
   };
 
   return (
     <div>
       <Header>
-        <Image id="arrow" src={Arrow} alt="arrow" />
+        <Link href="/">
+          <Image id="arrow" src={Arrow} alt="arrow" />
+        </Link>
         <p>챌린지 생성</p>
       </Header>
       <BodyWrapper>
@@ -79,15 +97,24 @@ const Create = () => {
           <MoneyDiv>
             <p>목표 총지출 금액</p>
             <input
-              type={"number"}
+              type="text"
               value={money}
               placeholder="기간 동안 총 사용할 수 있는 금액을 입력해주세요."
               onChange={onChangeMoney}
+              onBlur={onBlurMoney}
+              onClick={onClickMoneyText}
             />
             <Image src={line} alt="line" />
           </MoneyDiv>
         </InputDiv>
-        <DefaultBtn onClick={onClickBtn} height={60} value={"다음"} />
+        <Link href="/challenge">
+          <DefaultBtn
+            onClick={onClickBtn}
+            height={60}
+            value="다음"
+            disabled={isDisable}
+          />
+        </Link>
       </BodyWrapper>
     </div>
   );
@@ -121,7 +148,7 @@ const TitleDiv = styled.div`
     margin-bottom: 10px;
     border: none;
     outline: none;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
   }
 `;
@@ -148,11 +175,13 @@ const DateText = styled.p`
 const MoneyDiv = styled.div`
   padding: 0 20px;
   margin-bottom: 393px;
-  > input {
+  font-size: 14px;
+  input {
     width: 350px;
     border: none;
     outline: none;
     -webkit-appearance: none;
+    margin-bottom: 10px;
   }
 `;
 
