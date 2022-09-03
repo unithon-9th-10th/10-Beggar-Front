@@ -10,19 +10,20 @@ import theme from "../styles/theme";
 import DefaultBtn from "./common/defaultBtn";
 
 const CreateChallenge = () => {
-  let today = new Date();
-  let month = ("0" + (today.getMonth() + 1)).slice(-2);
-  let day = ("0" + today.getDate()).slice(-2);
-  let NumDay = Number(day);
-
   const [title, setTitle] = useState<string>("");
   const [money, setMoney] = useState<string>("");
   const [sort, setSort] = useState(sortOption[0].value);
-  const [sumDay, setsumToday] = useState<Number>(NumDay);
-
   const [isDisable, setIsDisable] = useState(true);
 
+  let today = new Date();
+  let month = ("0" + (today.getMonth() + 1)).slice(-2);
+  let day = ("0" + today.getDate()).slice(-2);
+
+  let NumDay = 0;
   let NumSort = 0;
+  let SumDay = 0;
+
+  let StringDay = "";
 
   const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -33,8 +34,17 @@ const CreateChallenge = () => {
     const sortValue = sort;
     setSort(sortValue);
     NumSort = Number(sort);
-    setsumToday(NumDay + NumSort - 1);
+    NumDay = Number(day);
+    SumDay = NumDay + NumSort - 1;
+    StringDay = String(SumDay);
+    if (SumDay < 10) {
+      setToDay(0 + StringDay);
+    } else {
+      setToDay(StringDay);
+    }
   };
+
+  const [toDay, setToDay] = useState<string>(day);
 
   const onChangeMoney = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -96,9 +106,7 @@ const CreateChallenge = () => {
           <DateDiv>
             <div>
               <TitleText>챌린지 기간</TitleText>
-              <DateText theme={theme}>
-                오늘 ~ {`${month}월${sumDay}일`}
-              </DateText>
+              <DateText theme={theme}>오늘 ~ {`${month}월${toDay}일`}</DateText>
             </div>
             <SelectDropDown
               value={sort}
