@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 
 const instance = axios.create({
-  baseURL: "https://server.mo1za.com",
+  baseURL: "http://api.10beggar.com/",
   timeout: 10000,
 });
 
@@ -27,14 +27,11 @@ instance.interceptors.response.use(
   async (err) => {
     if ((axios.isAxiosError(err) as any) && err.response) {
       const { config, response } = err;
-      if (
-        response.data.status === 401 &&
-        localStorage.getItem("refresh_token")
-      ) {
+      if (response.status === 401 && localStorage.getItem("refresh_token")) {
         try {
           const res = await axios({
             method: "patch",
-            url: "https://server.mo1za.com/auth/tokens",
+            url: "http://api.10beggar.com/",
             headers: {
               "Refresh-Token": `Bearer ${localStorage.getItem(
                 "refresh_token"

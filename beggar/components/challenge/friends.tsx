@@ -5,18 +5,21 @@ import CurrentUserLine from "../../assets/img/challenge/currentUserLine.svg";
 import NewFriendCircle from "../../assets/img/challenge/newFriendCircle.svg";
 import styled from "styled-components";
 import { useState } from "react";
+import { IChallengeDetailResponse } from "../../utils/models/response";
 
-const Friends: NextPage = () => {
-  const friendList = [
-    { name: "n1" },
-    { name: "n2" },
-    { name: "n3", image: "blabla" },
-    { name: "n4", image: "blabla" },
-    { name: "n5", image: "blabla" },
-    { name: "n3", image: "blabla" },
-    { name: "n4", image: "blabla" },
-    { name: "n5", image: "blabla" },
-  ];
+const Friends: NextPage = (props) => {
+  const friendList = props.friendsList;
+  console.log(friendList);
+  // const friendList = [
+  //   { name: "n1" },
+  //   { name: "n2" },
+  //   { name: "n3", image: "blabla" },
+  //   { name: "n4", image: "blabla" },
+  //   { name: "n5", image: "blabla" },
+  //   { name: "n3", image: "blabla" },
+  //   { name: "n4", image: "blabla" },
+  //   { name: "n5", image: "blabla" },
+  // ];
 
   const [currentUser, setCurrentUser] = useState(0);
 

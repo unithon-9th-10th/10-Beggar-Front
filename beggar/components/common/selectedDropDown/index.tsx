@@ -38,12 +38,12 @@ const SelectDropDown: React.FC<IDropdownProps> = ({
   return (
     <Wrapper className="dropdownWrapper" isFold={isFold}>
       <OutsideClickHandler onOutsideClick={onClickCloseDropdown}>
-        <div>
+        <label>
           <Image id="box" width={67} height={40} src={Box} alt="box" />
           <label onClick={() => setIsFold(!isFold)}>
             <div className="value">{selectedValue}</div>
           </label>
-        </div>
+        </label>
         <div className="list">
           {isFold &&
             options.map((item) => (
