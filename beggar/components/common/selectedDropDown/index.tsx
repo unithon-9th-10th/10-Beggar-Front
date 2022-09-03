@@ -33,15 +33,13 @@ const SelectDropDown: React.FC<IDropdownProps> = ({
     const index = options.findIndex((i: ISelectOption) => i.value === value);
     if (index === -1) return value;
     return options[index].option;
-  }, [value]);
+  }, [options, value]);
 
   return (
     <Wrapper className="dropdownWrapper" isFold={isFold}>
       <OutsideClickHandler onOutsideClick={onClickCloseDropdown}>
         <div>
-          <ImageBox>
-            <Image id="box" width={67} height={40} src={Box} alt="box" />
-          </ImageBox>
+          <Image id="box" width={67} height={40} src={Box} alt="box" />
           <label onClick={() => setIsFold(!isFold)}>
             <div className="value">{selectedValue}</div>
           </label>
@@ -90,10 +88,6 @@ const Wrapper = styled.section<{ isFold: boolean } & ArrowProps>`
     border-radius: 0 0 5px 5px;
     border-top: 0;
   }
-`;
-
-const ImageBox = styled.div`
-  width: 200px;
 `;
 
 const Option = styled.div<OptionProps>`

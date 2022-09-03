@@ -5,7 +5,7 @@ import Image from "next/image";
 import Required from "../assets/img/common/required.svg";
 import CloseButton from "../assets/img/common/closeButton.svg";
 
-import SelectDropDown from "./common/selectedDropDown";
+// import SelectDropDown from "./common/selectedDropDown";
 
 interface category {
   option: string;
@@ -80,11 +80,6 @@ const CreateSpend = () => {
               <TitleText>카테고리</TitleText>
               <Image id="Required" src={Required} alt="Required" />
             </TitleBox>
-            <SelectDropDown
-              value={categoryOption[0].value}
-              onChangeValue={onChangeCategory}
-              options={categoryOption}
-            />
           </CategoryBox>
         </InputDiv>
       </Wrapper>
