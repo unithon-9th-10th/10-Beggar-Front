@@ -8,7 +8,7 @@ body {
 
 @font-face {
   font-family: "BM-HANNA";
-  src: url("../public/font/BM-HANNA.ttf") format("truetype");
+  src: url("../public/fonts/BM-HANNA.ttf") format("truetype");
 }
 
 a {
