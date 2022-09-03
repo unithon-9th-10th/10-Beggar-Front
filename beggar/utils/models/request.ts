@@ -22,8 +22,8 @@ export interface ICommentDeleteDto {
 }
 
 export interface IExpenseAddRequest {
-  amount: number;
+  amount: string;
   content: string;
   expensedType: TCategory;
-  referenceDate: string;
+  referenceDate: string | null;
 }

@@ -1,3 +1,5 @@
+import { TCategory } from "../../../utils/models/common";
+
 export interface IDropdownProps {
   options: Array<ISelectOption>;
   value: string;
