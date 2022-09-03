@@ -4,13 +4,16 @@ import Image from "next/image";
 import Arrow from "../../assets/img/common/leftArrow.svg";
 import DotLine from "../../assets/img/line.svg";
 import RankingUser from "./RankingUser";
+import Link from "next/link";
 
 const Ranking = () => {
   return (
     <div>
       <Header>
         <div className="head">
-          <Image id="arrow" src={Arrow} alt="arrow" />
+          <Link href="/challenge">
+            <Image id="arrow" src={Arrow} alt="arrow" />
+          </Link>
           <p>랭킹</p>
         </div>
         <TitleDiv>

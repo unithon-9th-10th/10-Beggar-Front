@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 import Image from "next/image";
 import RankingIcon from "../../assets/img/challenge/rankingIcon.svg";
 import styled from "styled-components";
@@ -9,7 +10,9 @@ const Title: NextPage = () => {
       <TitleText>돈아끼고여행가자</TitleText>
       <DdayText>6일 남음</DdayText>
       <Ranking>
-        <Image src={RankingIcon} alt="rankingIcon" width={29} height={37} />
+        <Link href="/ranking">
+          <Image src={RankingIcon} alt="rankingIcon" width={29} height={37} />
+        </Link>
       </Ranking>
     </Container>
   );

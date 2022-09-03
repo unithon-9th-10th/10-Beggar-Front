@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
-import Arrow from "../../assets/img/common/leftArrow.svg";
-import People from "../../assets/img/common/peopleImg.svg";
-import line from "../../assets/img/common/line.svg";
+import Arrow from "../assets/img/common/leftArrow.svg";
+import People from "../assets/img/common/peopleImg.svg";
+import line from "../assets/img/common/line.svg";
 import DefaultBtn from "./common/defaultBtn";
 
 const CreateUser = () => {
@@ -28,7 +29,9 @@ const CreateUser = () => {
   return (
     <div>
       <Header>
-        <Image id="arrow" src={Arrow} alt="arrow" />
+        <Link href="/createChallenge">
+          <Image id="arrow" src={Arrow} alt="arrow" />
+        </Link>
         <p>프로필 생성</p>
       </Header>
       <Wrapper>
@@ -41,11 +44,13 @@ const CreateUser = () => {
           />
           <Image src={line} alt="line" />
         </InputDiv>
-        <DefaultBtn
-          disabled={content.disabled}
-          height={60}
-          value={"상대 초대"}
-        />
+        <Link href="/inviteUser">
+          <DefaultBtn
+            disabled={content.disabled}
+            height={60}
+            value={"상대 초대"}
+          />
+        </Link>
       </Wrapper>
     </div>
   );
