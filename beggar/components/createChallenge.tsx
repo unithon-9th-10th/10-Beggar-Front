@@ -8,7 +8,6 @@ import line from "../assets/img/common/line.svg";
 import SelectDropDown from "./common/selectedDropDown";
 import theme from "../styles/theme";
 import DefaultBtn from "./common/defaultBtn";
-import axios from "axios";
 
 const CreateChallenge = () => {
   const [title, setTitle] = useState<string>("");
