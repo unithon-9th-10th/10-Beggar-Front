@@ -38,9 +38,17 @@ const SelectDropDown: React.FC<IDropdownProps> = ({
   return (
     <Wrapper className="dropdownWrapper" isFold={isFold}>
       <OutsideClickHandler onOutsideClick={onClickCloseDropdown}>
+<<<<<<< HEAD
         <Image id="box" width={67} height={40} src={Box} alt="box" />
         <label onClick={() => setIsFold(!isFold)}>
           <div className="value">{selectedValue}</div>
+=======
+        <label>
+          <Image id="box" width={67} height={40} src={Box} alt="box" />
+          <label onClick={() => setIsFold(!isFold)}>
+            <div className="value">{selectedValue}</div>
+          </label>
+>>>>>>> challengepage
         </label>
         <div className="list">
           {isFold &&

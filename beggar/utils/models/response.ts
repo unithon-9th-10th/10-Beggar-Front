@@ -42,37 +42,39 @@ export interface IChallengeResultResponse {
 }
 
 export interface IChallengeDetailResponse {
-  code: string;
   data: {
-    memberDetailVoList: [
-      {
-        dailyExpenseVoList: [
-          {
-            expenseDetailVoList: [
-              {
-                amount: number;
-                content: string;
-                expenseType: TCategory;
-                higherCount: number;
-                lowerCount: number;
-                memberCommentType: TBeggar | null;
-                referenceDate: string;
-              }
-            ];
-            referenceDate: string;
-            totalAmount: number;
-          }
-        ];
-        limitAmount: number;
-        memberNickname: string;
-        memberPoint: number;
-        ranking: number;
-        remainAmount: number;
-        usedAmount: number;
-      }
-    ];
+    code: string;
+    data: {
+      memberDetailVoList: [
+        {
+          dailyExpenseVoList: [
+            {
+              expenseDetailVoList: [
+                {
+                  amount: number;
+                  content: string;
+                  expenseType: TCategory;
+                  higherCount: number;
+                  lowerCount: number;
+                  memberCommentType: TBeggar | null;
+                  referenceDate: string;
+                }
+              ];
+              referenceDate: string;
+              totalAmount: number;
+            }
+          ];
+          limitAmount: number;
+          memberNickname: string;
+          memberPoint: number;
+          ranking: number;
+          remainAmount: number;
+          usedAmount: number;
+        }
+      ];
+    };
+    message: string;
   };
-  message: string;
 }
 
 export interface IGetMemberDetailResponse {

@@ -1,10 +1,8 @@
 import { TBeggar, TCategory } from "./common";
 
 export interface IChallengeRequest {
-  amount: number;
-  challengeDays: number;
-  endDate: string;
-  startDate: string;
+  amount: string;
+  challengeDays: string;
   title: string;
 }
 

@@ -3,13 +3,17 @@ import { sortOption } from "./common/selectedDropDown/option";
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Arrow from "../assets/img/common/leftArrow.svg";
 import line from "../assets/img/common/line.svg";
 import SelectDropDown from "./common/selectedDropDown";
 import theme from "../styles/theme";
 import DefaultBtn from "./common/defaultBtn";
 
+import { postChallenges } from "../utils/api/index";
+
 const CreateChallenge = () => {
+  const router = useRouter();
   const [title, setTitle] = useState<string>("");
   const [money, setMoney] = useState<string>("");
   const [sort, setSort] = useState(sortOption[0].value);
@@ -53,8 +57,23 @@ const CreateChallenge = () => {
 
   const onClickBtn = (e: React.MouseEvent<HTMLInputElement>) => {
     if (title === "" || money === "") {
-      e.preventDefault();
+      return e.preventDefault();
     }
+
+    const challengeBody = {
+      amount: money.slice(0, money.length - 1),
+      challengeDays: sort,
+      title,
+    };
+
+    postChallenges(challengeBody).then((res) => {
+      if (res.data.code == "SUCCESS") {
+        router.push({
+          pathname: "/createUser",
+          query: { cid: res.data.data.challengeId },
+        });
+      }
+    });
   };
 
   useEffect(() => {
@@ -115,14 +134,12 @@ const CreateChallenge = () => {
             />
           </DateDiv>
         </InputDiv>
-        <Link href="/createUser">
-          <DefaultBtn
-            onClick={onClickBtn}
-            height={60}
-            value="다음"
-            disabled={isDisable}
-          />
-        </Link>
+        <DefaultBtn
+          onClick={onClickBtn}
+          height={60}
+          value="다음"
+          disabled={isDisable}
+        />
       </BodyWrapper>
     </div>
   );

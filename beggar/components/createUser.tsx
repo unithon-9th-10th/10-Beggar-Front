@@ -2,28 +2,50 @@ import React, { useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import Arrow from "../assets/img/common/leftArrow.svg";
 import People from "../assets/img/common/peopleImg.svg";
 import line from "../assets/img/common/line.svg";
 import DefaultBtn from "./common/defaultBtn";
 
+import { postSignUp, putMember } from "../utils/api/index";
+
 const CreateUser = () => {
-  const [content, setContent] = useState({
-    title: " ",
-    disabled: true,
-  });
+  const router = useRouter();
+  const cid = router.query.cid;
+  const [nickname, setNickname] = useState("");
+  const [disable, setDisable] = useState(true);
 
   const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    setContent({
-      ...content,
-      title: value,
-    });
-    if (content.title === "") {
-      setContent({ ...content, disabled: true });
+    setNickname(value);
+    if (nickname === "") {
+      setDisable(true);
     } else {
-      setContent({ ...content, disabled: false });
+      setDisable(false);
     }
+  };
+
+  const registerUser = async () => {
+    const body = {
+      nickname: nickname,
+    };
+    postSignUp()
+      .then((res) => {
+        const id = res.data.data.memberId;
+        localStorage.setItem("memberId", id);
+        return id;
+      })
+      .then((uid) => {
+        putMember(body, cid, uid).then((res) => {
+          if (res.data.code == "SUCCESS") {
+            router.push({
+              pathname: "/challenge",
+              query: { uid: uid },
+            });
+          }
+        });
+      });
   };
 
   return (
@@ -40,15 +62,16 @@ const CreateUser = () => {
           <p>닉네임</p>
           <input
             onChange={onChangeTitle}
-            placeholder="ex) 돈 모아서 여행가자"
+            placeholder="닉네임을 입력해주세요."
           />
           <Image src={line} alt="line" />
         </InputDiv>
         <Link href="/inviteUser">
           <DefaultBtn
-            disabled={content.disabled}
+            disabled={disable}
             height={60}
             value={"상대 초대"}
+            onClick={registerUser}
           />
         </Link>
       </Wrapper>
