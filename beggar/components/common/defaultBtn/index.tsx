@@ -2,20 +2,15 @@ import React, { InputHTMLAttributes } from "react";
 import styled from "styled-components";
 import theme from "../../../styles/theme";
 
-interface Props extends InputHTMLAttributes<HTMLDivElement> {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   height?: number;
-  children?: string;
 }
 
-const DefaultBtn = ({ height, children }: Props) => {
-  return (
-    <DefaultBtnBox theme={theme} height={height}>
-      {children}
-    </DefaultBtnBox>
-  );
+const DefaultBtn = ({ height, type = "button", ...props }: Props) => {
+  return <DefaultBtnBox theme={theme} type={type} height={height} {...props} />;
 };
 
-const DefaultBtnBox = styled.div<{
+const DefaultBtnBox = styled.input<{
   height?: number;
 }>`
   display: flex;

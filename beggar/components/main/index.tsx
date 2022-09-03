@@ -26,7 +26,7 @@ const Main = () => {
       <Body>
         <Image src={main} alt="mainImg" />
       </Body>
-      <DefaultBtn height={60}>챌린지 만들기</DefaultBtn>
+      <DefaultBtn height={60} value={"챌린지 만들기"} />
       <Bottom>
         <p>초대받은 챌린지가 있나요?</p>
       </Bottom>
