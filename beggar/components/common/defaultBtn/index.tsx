@@ -25,6 +25,10 @@ const DefaultBtnBox = styled.input<{
   color: ${({ theme }) => theme.color.white};
   font-size: 20px;
   font-weight: 400;
+  ::disabled {
+    border: none;
+    background-color: ${({ theme }) => theme.color.light_gray};
+  }
 `;
 
 export default DefaultBtn;
