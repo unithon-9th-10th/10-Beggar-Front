@@ -100,7 +100,7 @@ const Option = styled.div<OptionProps>`
   color: ${(props) => (props.isSelected ? "#555555" : "#999999")};
   background-color: #ffffff;
   box-sizing: border-box;
-  padding: 8px 12px 6px 11px;
+  padding: 10px 12px 10px 11px;
   :last-child {
     border-radius: 0 0 4px 4px;
   }
