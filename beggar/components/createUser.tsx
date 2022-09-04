@@ -37,11 +37,10 @@ const CreateUser = () => {
         return id;
       })
       .then((uid) => {
-        putMember(body, cid, uid).then((res) => {
+        putMember(body, cid, uid).then((res: any) => {
           if (res.data.code == "SUCCESS") {
             router.push({
               pathname: "/challenge",
-              query: { uid: uid },
             });
           }
         });

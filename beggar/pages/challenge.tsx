@@ -20,11 +20,12 @@ const MainChallenge: NextPage = () => {
       }
     });
   }, []);
+  console.log(info);
 
   return (
     <div>
       <Header />
-      <Friends friendsList={info?.data.data.memberDetailVoList} />
+      <Friends />
       <InfoCard />
       <SpendingHistory />
     </div>

@@ -53,6 +53,7 @@ export interface IChallengeDetailResponse {
                 {
                   amount: number;
                   content: string;
+                  expenseId: number;
                   expenseType: TCategory;
                   higherCount: number;
                   lowerCount: number;

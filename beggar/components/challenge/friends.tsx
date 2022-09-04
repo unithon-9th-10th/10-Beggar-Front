@@ -6,26 +6,16 @@ import NewFriendCircle from "../../assets/img/challenge/newFriendCircle.svg";
 import styled from "styled-components";
 import { useState } from "react";
 import { IChallengeDetailResponse } from "../../utils/models/response";
+import Link from "next/link";
 
 const Friends: NextPage = (props) => {
-  const friendList = props.friendsList;
-  console.log(friendList);
-  // const friendList = [
-  //   { name: "n1" },
-  //   { name: "n2" },
-  //   { name: "n3", image: "blabla" },
-  //   { name: "n4", image: "blabla" },
-  //   { name: "n5", image: "blabla" },
-  //   { name: "n3", image: "blabla" },
-  //   { name: "n4", image: "blabla" },
-  //   { name: "n5", image: "blabla" },
-  // ];
+  console.log(props, "????????????");
 
   const [currentUser, setCurrentUser] = useState(0);
 
   return (
     <Container>
-      {friendList.map((friend, index) => (
+      {/* {friendList.map((friend, index) => (
         <UserBox key={friend.name}>
           <UserImage>
             {friend.image ? (
@@ -51,18 +41,20 @@ const Friends: NextPage = (props) => {
             )}
           </UserName>
         </UserBox>
-      ))}
-      <UserBox>
-        <NewUserImage>
-          <Image
-            src={NewFriendCircle}
-            alt="NewFriendCircle"
-            width={32}
-            height={32}
-          />
-        </NewUserImage>
-        <UserName>초대</UserName>
-      </UserBox>
+      ))} */}
+      <Link href="/inviteUser">
+        <UserBox>
+          <NewUserImage>
+            <Image
+              src={NewFriendCircle}
+              alt="NewFriendCircle"
+              width={32}
+              height={32}
+            />
+          </NewUserImage>
+          <UserName>초대</UserName>
+        </UserBox>
+      </Link>
     </Container>
   );
 };

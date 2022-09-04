@@ -50,9 +50,9 @@ export const postComment = async (body: ICommentPostDto) => {
   }
 };
 
-export const postExpense = async (body: IExpenseAddRequest) => {
+export const postExpense = async (body: IExpenseAddRequest, headers: any) => {
   try {
-    return await instance.post(`/api/v1/expenses`, body);
+    return await instance.post(`/api/v1/expenses`, body, { headers });
   } catch (error) {
     throw error;
   }

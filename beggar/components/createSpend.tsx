@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import Required from "../assets/img/common/required.svg";
 import CloseButton from "../assets/img/common/closeButton.svg";
 import LongBox from "../assets/img/expend/longBox.svg";
@@ -12,6 +13,8 @@ import shopping from "../assets/img/expend/shopping.svg";
 import enter from "../assets/img/expend/enter.svg";
 import snack from "../assets/img/expend/snack.svg";
 import etc from "../assets/img/expend/etc.svg";
+
+import { postExpense } from "../utils/api/index";
 
 interface category {
   option: string;
@@ -45,10 +48,12 @@ const categoryOption: category[] = [
 ];
 
 const CreateSpend = () => {
+  const router = useRouter();
+
   const [money, setMoney] = useState<string>("");
   const [place, setPlace] = useState<string>("");
   const [modal, setModal] = useState<boolean>(false);
-  const [category, setCategory] = useState(categoryOption[0].option);
+  const [category, setCategory] = useState(categoryOption[0]);
 
   let today = new Date();
 
@@ -81,8 +86,31 @@ const CreateSpend = () => {
     setModal(!modal);
   };
 
-  const onClickSelect = (e: React.MouseEvent<HTMLImageElement>) => {
+  const onClickSelect = (
+    e: React.MouseEvent<HTMLImageElement>,
+    option: string,
+    value: string
+  ) => {
     setModal(!modal);
+    setCategory({ option, value });
+  };
+
+  const onClickAdd = () => {
+    const memberId = localStorage?.getItem("memberId");
+    const headers = { "X-BEGGAR-MEMBER-ID": memberId };
+
+    const body = {
+      amount: money.slice(0, money.length - 1),
+      content: place,
+      expensedType: category.value,
+      referenceDate: null,
+    };
+    postExpense(body, headers).then((res) => {
+      console.log(res);
+      if (res.data.code === "SUCCESS") {
+        router.push("/challenge");
+      }
+    });
   };
 
   return (
@@ -90,13 +118,9 @@ const CreateSpend = () => {
       {modal ? (
         <ModalWrapper>
           <Header>
-            <Link href="/challenge">
-              <Image id="CloseButton" src={CloseButton} alt="CloseButton" />
-            </Link>
+            <Image id="CloseButton" src={CloseButton} alt="CloseButton" />
             <p>지출 내역 추가</p>
-            <Link href="/challenge">
-              <AddButton>완료</AddButton>
-            </Link>
+            <AddButton>완료</AddButton>
           </Header>
           <Wrapper>
             <InputDiv>
@@ -106,7 +130,7 @@ const CreateSpend = () => {
                   <Image id="Required" src={Required} alt="Required" />
                 </div>
                 <Image src={LongBox} alt="box" />
-                <p>{category}</p>
+                <p>{category.option}</p>
               </CategoryBox>
               <MoneyDiv>
                 <div>
@@ -141,12 +165,36 @@ const CreateSpend = () => {
           <ModalDiv>
             <p>카테고리 선택</p>
             <div>
-              <Image onClick={onClickSelect} src={rice} />
-              <Image onClick={onClickSelect} src={car} />
-              <Image onClick={onClickSelect} src={shopping} />
-              <Image onClick={onClickSelect} src={enter} />
-              <Image onClick={onClickSelect} src={etc} />
-              <Image onClick={onClickSelect} src={snack} />
+              <Image
+                onClick={(e) => onClickSelect(e, "밥", "FOOD")}
+                src={rice}
+                alt={rice}
+              />
+              <Image
+                onClick={(e) => onClickSelect(e, "교통", "TRANSPORTATIOM")}
+                src={car}
+                alt={car}
+              />
+              <Image
+                onClick={(e) => onClickSelect(e, "쇼핑", "SHOPPING")}
+                src={shopping}
+                alt={shopping}
+              />
+              <Image
+                onClick={(e) => onClickSelect(e, "유흥", "ENTERTAINMENT")}
+                src={enter}
+                alt={enter}
+              />
+              <Image
+                onClick={(e) => onClickSelect(e, "기타", "ETC")}
+                src={etc}
+                alt={etc}
+              />
+              <Image
+                onClick={(e) => onClickSelect(e, "간식", "SNACK")}
+                src={snack}
+                alt={snack}
+              />
             </div>
           </ModalDiv>
         </ModalWrapper>
@@ -157,9 +205,7 @@ const CreateSpend = () => {
               <Image id="CloseButton" src={CloseButton} alt="CloseButton" />
             </Link>
             <p>지출 내역 추가</p>
-            <Link href="/challenge">
-              <AddButton>완료</AddButton>
-            </Link>
+            <AddButton onClick={onClickAdd}>완료</AddButton>
           </Header>
           <Wrapper>
             <InputDiv>
@@ -169,7 +215,7 @@ const CreateSpend = () => {
                   <Image id="Required" src={Required} alt="Required" />
                 </div>
                 <Image onClick={onClickModal} src={LongBox} alt="box" />
-                <p>{category}</p>
+                <p>{category.option}</p>
               </CategoryBox>
               <MoneyDiv>
                 <div>
