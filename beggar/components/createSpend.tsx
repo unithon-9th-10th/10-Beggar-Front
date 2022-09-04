@@ -39,7 +39,7 @@ const categoryOption: category[] = [
   },
   {
     option: "교통",
-    value: "TRANSPORTATIOM",
+    value: "PORTATIOM",
   },
   {
     option: "기타",

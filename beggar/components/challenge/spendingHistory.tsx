@@ -1,13 +1,22 @@
 import type { NextPage } from "next";
 import Link from "next/link";
-import AddSpendingOutline from "../../assets/img/challenge/addSpendingOutline.svg";
+import Image from "next/image";
+import bestBaggerBanner from "../../assets/img/challenge/bestBaggerBanner.svg";
+import badBaggerBanner from "../../assets/img/challenge/badBaggerBanner.svg";
+import bestBaggerBannerTwo from "../../assets/img/challenge/bestBaggerBanner2.svg";
+import badBaggerBannerTwo from "../../assets/img/challenge/badBaggerBanner2.svg";
+import Food from "../../assets/img/challenge/food.svg";
+import Shopping from "../../assets/img/challenge/shopping.svg";
+import EnterTainment from "../../assets/img/challenge/amusement.svg";
 
 import styled from "styled-components";
 import { useState } from "react";
 
 const SpendingHistory: NextPage = () => {
   const [spendingList, setSpendingList] = useState([
-    { category: "clothes", price: "- 10,200원", content: "가을 옷" },
+    { category: "SHOPPING", price: "- 10,200원", content: "가을 옷" },
+    { category: "FOOD", price: "- 19,000원", content: "치킨" },
+    { category: "ENTERTAINMENT", price: "- 5,000원", content: "노래방" },
   ]);
 
   return (
@@ -24,9 +33,86 @@ const SpendingHistory: NextPage = () => {
         <PriceText>- 21,200원</PriceText>
       </LineBox>
       <ItemBox>
-        {spendingList.map((item, index) => (
-          <Item key={index}>{item.category}</Item>
-        ))}
+        <Item>
+          <Image src={Shopping} alt="Shpping" width={52} height={52} />
+          <TextBox>
+            <PriceText>- 10,200원</PriceText>
+            <ContentText>가을 옷</ContentText>
+            <BannerBox>
+              <BannerImage>
+                <Image
+                  src={bestBaggerBanner}
+                  alt="bestBanner"
+                  width={97}
+                  height={24}
+                />
+              </BannerImage>
+              <BannerImage>
+                <Image
+                  src={badBaggerBanner}
+                  alt="badBanner"
+                  width={97}
+                  height={24}
+                />
+              </BannerImage>
+            </BannerBox>
+          </TextBox>
+        </Item>
+        <Item>
+          <Image src={Food} alt="Food" width={52} height={52} />
+          <TextBox>
+            <PriceText>- 19,000원</PriceText>
+            <ContentText>치킨</ContentText>
+            <BannerBox>
+              <BannerImage>
+                <Image
+                  src={bestBaggerBannerTwo}
+                  alt="bestBanner"
+                  width={97}
+                  height={24}
+                />
+              </BannerImage>
+              <BannerImage>
+                <Image
+                  src={badBaggerBannerTwo}
+                  alt="badBanner"
+                  width={97}
+                  height={24}
+                />
+              </BannerImage>
+            </BannerBox>
+          </TextBox>
+        </Item>
+        <Item>
+          <Image
+            src={EnterTainment}
+            alt="ENTERTAINMENT"
+            width={52}
+            height={52}
+          />
+          <TextBox>
+            <PriceText>- 5,000원</PriceText>
+            <ContentText>노래방</ContentText>
+            <BannerBox>
+              <BannerImage>
+                <Image
+                  src={bestBaggerBanner}
+                  alt="bestBanner"
+                  width={97}
+                  height={24}
+                />
+              </BannerImage>
+              <BannerImage>
+                <Image
+                  src={badBaggerBanner}
+                  alt="badBanner"
+                  width={97}
+                  height={24}
+                />
+              </BannerImage>
+            </BannerBox>
+          </TextBox>
+        </Item>
       </ItemBox>
     </Container>
   );
@@ -83,13 +169,38 @@ const Line = styled.hr`
 const PriceText = styled.div`
   font-size: 14px;
   width: -webkit-fill-available;
-  text-align: right;
 `;
 
 const ItemBox = styled.div`
-  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
 `;
 
-const Item = styled.div``;
+const Item = styled.div`
+  display: flex;
+  height: 82px;
+  position: relative;
+`;
+
+const ContentText = styled.div``;
+
+const TextBox = styled.div`
+  margin: auto 20px;
+
+  display: flex;
+  flex-direction: column;
+`;
+
+const BannerBox = styled.div`
+  display: flex;
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+`;
+
+const BannerImage = styled.div`
+  right: 20px;
+  bottom: 0;
+`;
 
 export default SpendingHistory;
