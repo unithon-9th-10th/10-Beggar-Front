@@ -1,3 +1,4 @@
+import { Member } from "./challenge";
 import { TBeggar, TCategory, TStatus } from "./common";
 
 export interface IRankingResponse {
@@ -45,34 +46,8 @@ export interface IChallengeDetailResponse {
   data: {
     code: string;
     data: {
-      memberDetailVoList: [
-        {
-          dailyExpenseVoList: [
-            {
-              expenseDetailVoList: [
-                {
-                  amount: number;
-                  content: string;
-                  expenseId: number;
-                  expenseType: TCategory;
-                  higherCount: number;
-                  lowerCount: number;
-                  memberCommentType: TBeggar | null;
-                  referenceDate: string;
-                }
-              ];
-              referenceDate: string;
-              totalAmount: number;
-            }
-          ];
-          limitAmount: number;
-          memberNickname: string;
-          memberPoint: number;
-          ranking: number;
-          remainAmount: number;
-          usedAmount: number;
-        }
-      ];
+      memberDetailVoList: [Member],
+      title: string;
     };
     message: string;
   };

@@ -106,7 +106,6 @@ const CreateSpend = () => {
       referenceDate: null,
     };
     postExpense(body, headers).then((res) => {
-      console.log(res);
       if (res.data.code === "SUCCESS") {
         router.push("/challenge");
       }

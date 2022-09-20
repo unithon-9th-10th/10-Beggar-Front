@@ -4,10 +4,10 @@ import Link from "next/link";
 import RankingIcon from "../../assets/img/challenge/rankingIcon.svg";
 import styled from "styled-components";
 
-const Header: NextPage = () => {
+const Header = ({ title }: any) => {
   return (
     <Container>
-      <TitleText>돈아끼고여행가자</TitleText>
+      <TitleText>{title}</TitleText>
       <DdayText>6일 남음</DdayText>
       <Link href="/ranking">
         <Ranking>

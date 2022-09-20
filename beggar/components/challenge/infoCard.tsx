@@ -10,8 +10,9 @@ import RateArrow from "../../assets/img/challenge/rateArrow.svg";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 
-const InfoCard: NextPage = () => {
-  const point = 30;
+const InfoCard = ({ member }: any) => {
+  console.log(member.memberPoint, "in infocard")
+  const point = member.memberPoint;
 
   const [beggarState, setBeggarState] = useState(1);
   const beggarText = ["하거지", "중거지", "상거지"];
@@ -26,8 +27,8 @@ const InfoCard: NextPage = () => {
   return (
     <Container>
       <FirstLineBox>
-        <UserName>나나나</UserName>
-        <UserRanking>1위</UserRanking>
+        <UserName>{member.memberNickname}</UserName>
+        <UserRanking>{member.ranking}위</UserRanking>
         <UserBeggarRate>{beggarText[beggarState]}</UserBeggarRate>
       </FirstLineBox>
       <InfoBox>
@@ -43,15 +44,15 @@ const InfoCard: NextPage = () => {
 
         <AmountBox>
           <AvailableAmountText>남은 금액</AvailableAmountText>
-          <AvailableAmountPrice>445원</AvailableAmountPrice>
+          <AvailableAmountPrice>{member.limitAmount}원</AvailableAmountPrice>
 
           <AmountSubBox>
             <AmountSubText>목표 총지출</AmountSubText>
-            <AmountSubPrice>100,000원</AmountSubPrice>
+            <AmountSubPrice>{member.usedAmount}원</AmountSubPrice>
           </AmountSubBox>
           <AmountSubBox>
             <AmountSubText>누적 지출</AmountSubText>
-            <AmountSubPrice>-51,200원</AmountSubPrice>
+            <AmountSubPrice>{member.remainAmount}원</AmountSubPrice>
           </AmountSubBox>
         </AmountBox>
         <RateBox>

@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 
 const instance = axios.create({
-  baseURL: "https://api.10beggar.com/",
+  baseURL: "http://beggar-alb-1381180543.ap-northeast-2.elb.amazonaws.com/",
   timeout: 10000,
 });
 

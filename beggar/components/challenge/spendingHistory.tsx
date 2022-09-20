@@ -12,7 +12,8 @@ import EnterTainment from "../../assets/img/challenge/amusement.svg";
 import styled from "styled-components";
 import { useState } from "react";
 
-const SpendingHistory: NextPage = () => {
+const SpendingHistory = ({ member }: any) => {
+  console.log(member, "in spending")
   const [spendingList, setSpendingList] = useState([
     { category: "SHOPPING", price: "- 10,200원", content: "가을 옷" },
     { category: "FOOD", price: "- 19,000원", content: "치킨" },

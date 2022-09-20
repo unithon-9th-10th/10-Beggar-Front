@@ -1,43 +1,22 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import RankingIcon from "../../assets/img/challenge/rankingIcon.svg";
 import CurrentUserLine from "../../assets/img/challenge/currentUserLine.svg";
 import NewFriendCircle from "../../assets/img/challenge/newFriendCircle.svg";
 import styled from "styled-components";
 import { useState } from "react";
+import { Member } from "../../utils/models/challenge";
+import Link from "next/link";
 
-const Friends = () => {
-  const friendList = [
-    { name: "나나나" },
-    { name: "로이" },
-    { name: "고영" },
-    { name: "n4", image: "blabla" },
-    { name: "n5", image: "blabla" },
-    { name: "n3", image: "blabla" },
-    { name: "n4", image: "blabla" },
-    { name: "n5", image: "blabla" },
-  ];
-
-  const [currentUser, setCurrentUser] = useState(0);
-
+const Friends = ({ memberList, changeCurrentMember, currentUser }: any) => {
   return (
     <Container>
-      {friendList.map((friend, index) => (
-        <UserBox key={friend.name}>
+      {memberList && memberList.map((member: Member, index: number) => (
+        <UserBox key={index} onClick={() => changeCurrentMember(index)}>
           <UserImage>
-            {friend.image ? (
-              <Image
-                src={RankingIcon}
-                alt="RankingIcon"
-                width={32}
-                height={32}
-              />
-            ) : (
-              index + 1
-            )}
+            {index + 1}
           </UserImage>
           <UserName>
-            {friend.name}
+            {member.memberNickname}
             {currentUser === index && (
               <Image
                 src={CurrentUserLine}
@@ -49,7 +28,7 @@ const Friends = () => {
           </UserName>
         </UserBox>
       ))}
-      <UserBox>
+      <Link href="/inviteUser"><UserBox>
         <NewUserImage>
           <Image
             src={NewFriendCircle}
@@ -59,7 +38,7 @@ const Friends = () => {
           />
         </NewUserImage>
         <UserName>초대</UserName>
-      </UserBox>
+      </UserBox></Link>
     </Container>
   );
 };
@@ -75,7 +54,9 @@ const Container = styled.div`
   }
 `;
 
-const UserBox = styled.div``;
+const UserBox = styled.div`
+  cursor: pointer;
+`;
 
 const UserImage = styled.div`
   width: 32px;
